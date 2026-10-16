@@ -1,0 +1,346 @@
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f7cac9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 讓裝著成員的整排容器水平並排 */
+.team-container {
+  display: flex;
+  /* 啟動彈性盒子，讓裡面的成員橫向排成一排 */
+  gap: 20px;
+  /* 每個成員之間的間距 */
+  flex-wrap: wrap;
+  /* 如果螢幕太窄放不下，會自動換行，不會跑版 */
+}
+
+/* 讓每位成員的卡片內容（照片 + 名字）垂直置中 */
+.member-card {
+  display: flex;
+  flex-direction: column;
+  /* 照片在上、名字在下 */
+  align-items: center;
+  /* 水平置中！照片和名字都會乖乖對齊中線 */
+  text-align: center;
+  text-decoration: none;
+  /* 移除超連結底線（如果想保留底線可不加） */
+}
+
+.member-card a {
+  margin-top: 8px;
+  /* 讓名字跟照片之間有一點點小距離 */
+  font-weight: bold;
+  color: #333;
+  /* 可以換成你喜歡的名字顏色 */
+  text-decoration: none;
+  /* 拿掉藍色底線，看起來更俐落 */
+}
+
+.member-card a:hover {
+  color: #92a8d1;
+  /* 滑鼠滑過去時變成寧靜藍 */
+}
+
+.team-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #333333;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin-bottom: 16px;
+  /* 底線樣式設定 */
+  border-bottom: 3px solid #333333;
+  /* 3px 粗細、實線、顏色 */
+  padding-bottom: 1px;
+  /* 字體與底線之間的距離 */
+}
+
+.leader {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #F7CAC9;
+  box-shadow: 0 4px 12px rgba(146, 168, 209, 0.25);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  z-index: 1000;
+  letter-spacing: 1px;
+}
+
+.member-card {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.crown {
+  position: absolute;
+  top: -22px;
+  /* 距離頭頂的高度，可依頭貼大小微調*/
+  left: 50%;
+  /* 水平置中 */
+  transform: translateX(-50%) rotate(-10deg);
+  /* 置中並稍微歪一點點，增加俏皮立體感 */
+  font-size: 26px;
+  /* 皇冠大小 */
+  z-index: 10;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  /* 這是皇冠的陰影效果，讓它看起來更立體 */
+  pointer-events: none;
+  /* 避免擋住滑鼠點擊 */
+}
+
+.crown-big {
+  position: absolute;
+  left: 50%;
+  font-size: 32px;
+  top: -22px;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+}
+
+/* S.COUPS 名字下方的專屬標籤 */
+.general-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #F7CAC9, #92A8D1);
+  border-radius: 12px;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* ===================================== Game Styles ================================= */
+.game {
+  max-width: 900px;
+  margin: 30px auto;
+  font-family: sans-serif;
+  user-select: none;
+}
+
+.numbers-pool {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: #f4f6fa;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px dashed #92A8D1;
+}
+
+.num-box {
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  background: #fff;
+  border: 2px solid #F7CAC9;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 800;
+  color: #333;
+  cursor: grab;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease;
+}
+
+.num-box:hover {
+  transform: scale(1.1);
+}
+
+.num-box.dragging {
+  opacity: 0.4;
+}
+
+.photo-container {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.group-photo {
+  width: 100%;
+  display: block;
+}
+
+.target-slot {
+  position: absolute;
+  z-index: 50;
+  /* 確保浮在最上層 */
+  min-width: 50px;
+
+  padding: 4px 6px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border: 2px dashed #92A8D1;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #444;
+  text-align: center;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.target-slot.hovered {
+  background: rgba(247, 202, 201, 0.9);
+  border-color: #e57373;
+}
+
+.target-slot.correct {
+  background: #e8f5e9 !important;
+  border-color: #4caf50 !important;
+  color: #2e7d32 !important;
+}
+
+.target-slot.wrong {
+  background: #ffebee !important;
+  border-color: #f44336 !important;
+  color: #c62828 !important;
+}
+
+.game-btn {
+  display: inline-block;
+  white-space: nowrap;
+  /* 防止按鈕文字折行變成直排 */
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  background: linear-gradient(135deg, #F7CAC9, #92A8D1);
+  color: #333;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 10px 8px;
+}
+
+.game-btn.reset {
+  background: #eee;
+  color: #666;
+}
+
+/* ===================================== Line Styles ================================= */
+ .age-line-section { 
+  margin: 50px auto;
+  max-width: 900px;
+  /* padding: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(146, 168, 209, 0.25);
+  border: 1px solid #F7CAC9; */
+  text-align: center;
+} 
+
+
+.age-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.age-group {
+  background: #fafafa;
+  border-left: 4px solid #92A8D1;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+
+.age-group h3 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.age-group p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+
+
+/* ====================================== */
+/* 每一組 Line 的容器：讓標籤與頭像水平排成一橫列，且上下緊湊 */
+#ageLayout .age-group-box {
+    display: flex;
+    justify-content: center; /* 整行在版面居中 */
+    align-items: center;     /* 關鍵：讓文字標籤與成員頭像垂直對齊中線 */
+    margin-bottom: 1px;     /* 調整這裡！數值越小，每一行之間的距離越緊湊 */
+    width: 100%;
+}
+
+/* 標籤文字樣式：直接貼在第一位成員頭像左側 */
+#ageLayout .team-name{    /* line-tag */
+    font-size: 20px;
+    font-weight: 800;
+    color: #444;
+    white-space: nowrap;     /* 防止折行 */
+    margin-right: 16px;      /* 標籤文字與第一個人頭像之間的間距 */
+    text-align: right;
+    min-width: 65px;         /* 固定寬度，讓字數不同的標籤排起來很工整 */
+}
+
+/* 成員小卡容器：保持居中與緊湊間距 */
+#ageLayout .team-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;               /* 成員頭像彼此之間的左右間距 */
+    margin: 0;               /* 清除預設的外距 */
+    padding: 0;
+}
+
+/* 成員小卡本體 */
+#ageLayout .member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+#ageLayout .age-row,
+#ageLayout .age-group,
+#ageLayout .team-container,
+#ageLayout .member-card {
+    border: none !important;
+    border-left: none !important;
+    box-shadow: none !important;
+}
+
+/* ================================================== */
+.toggle-mode-btn {
+    padding: 8px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #444;
+    background: linear-gradient(135deg, #F7CAC9 0%, #92A8D1 100%);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(146, 168, 209, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toggle-mode-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(247, 202, 201, 0.5);
+}
+
+.toggle-mode-btn:active {
+    transform: scale(0.98);
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜猜年紀大小</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <a href="index.html" class="back-home">🏠 回首頁</a>
+    <div class="game">
+        <h2 style="text-align:center;">猜猜誰是忙內 </h2>
+        <p style="text-align:center; color:#666;">請將數字方塊（1 為大哥，13 為忙內）拖曳到對應成員的格子中</p>
+
+        <!-- 上方：1 ~ 13 數字拖曳池 -->
+        <div class="numbers-pool" id="numbersPool">
+            <div class="num-box" draggable="true" data-val="1">1</div>
+            <div class="num-box" draggable="true" data-val="2">2</div>
+            <div class="num-box" draggable="true" data-val="3">3</div>
+            <div class="num-box" draggable="true" data-val="4">4</div>
+            <div class="num-box" draggable="true" data-val="5">5</div>
+            <div class="num-box" draggable="true" data-val="6">6</div>
+            <div class="num-box" draggable="true" data-val="7">7</div>
+            <div class="num-box" draggable="true" data-val="8">8</div>
+            <div class="num-box" draggable="true" data-val="9">9</div>
+            <div class="num-box" draggable="true" data-val="10">10</div>
+            <div class="num-box" draggable="true" data-val="11">11</div>
+            <div class="num-box" draggable="true" data-val="12">12</div>
+            <div class="num-box" draggable="true" data-val="13">13</div>
+        </div>
+
+        <!-- 中間：大合照與懸浮目標格子 -->
+        <div class="photo-container" id="photoArea">
+
+            <img src="https://news.agentm.tw/wp-content/uploads/ee147c43-8829-42d4-bbe2-831661a73305.jpg" class="group-photo" alt="SEVENTEEN 全體合照">
+            <div class="target-slot" data-ans="1" style="top: 18%; left: 85%;">S.COUPS</div>
+            <div class="target-slot" data-ans="2" style="top: 12.5%; left: 66%;">尹淨漢</div>
+            <div class="target-slot" data-ans="3" style="top: 40%; left: 90%;">Joshua</div>
+            <div class="target-slot" data-ans="4" style="top: 20%; left: 18%;">Jun</div>
+            <div class="target-slot" data-ans="5" style="top: 41%; left: 7%;">Hoshi</div>
+            <div class="target-slot" data-ans="6" style="top: 55%; left: 24%;">全圓佑</div>
+            <div class="target-slot" data-ans="7" style="top: 18%; left: 47%;">WOOZI</div>
+            <div class="target-slot" data-ans="8" style="top: 30%; left: 55%;">DK</div>
+            <div class="target-slot" data-ans="9" style="top: 30%; left: 34%;">金珉奎</div>
+            <div class="target-slot" data-ans="10" style="top: 50%; left: 76%;">THE 8</div>
+            <div class="target-slot" data-ans="11" style="top: 50%; left: 38%;">夫勝寛</div>
+            <div class="target-slot" data-ans="12" style="top: 55%; left: 50%;">Vernon</div>
+            <div class="target-slot" data-ans="13" style="top: 55%; left: 62%;">Dino</div>
+        </div>
+
+        <div class="buttons-area">
+          <button id="checkBtn" class="game-btn">驗證答案</button>
+          <button id="resetBtn" class="game-btn reset">重置</button>
+          <div id="resultMsg"></div>
+        </div>
+      
+    </div>
+
+    <script src='game_scripts.js'></script>
+</body>
+</html>
